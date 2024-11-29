@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="color-scheme: dark;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀚 · 关于</title>
+    <link rel="stylesheet" href="./css/style.min.css">
+    <link rel="shortcut icon" href="./assets/public/favicon.gif" />
+</head>
+
+<body>
+    <canvas class="fireworks"></canvas>
+    <div class="head">
+        <div class="main">
+            <a href="./index.html" class="logo" style="font-size: 24px;color: white;">瀚</a>
+            <div class="menu">
+                <li class="magical btn" onclick="window.location.href='./index.html'">首页</li>
+                <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
+                <li class="magical btn" onclick="window.location.href='./blog.html'">博客</li>
+                <li class="magical btn nav" onclick="window.location.href='./about.html'">关于</li>
+            </div>
+            <div class="menu" id="menu-expand">
+                <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
+            </div>
+            <div id="menu-panel">
+                <div class="menu-panel-content">
+                    <li class="magical btn" onclick="window.location.href='./index.html'">首页</li>
+                    <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
+                    <li class="magical btn" onclick="window.location.href='./blog.html'">博客</li>
+                    <li class="magical btn nav" onclick="window.location.href='./about.html'">关于</li>
+                </div>
+            </div>
+        </div>
+        <blockquote><img src="./assets/public/skin_light.svg"></blockquote>
+    </div>
+    <div class="about">
+        <div class="about-top">
+            <div class="about-name">姓名：瀚</div>
+            <div class="about-info">
+                <div class="about-info-left">
+                    <div class="about-info-title">介绍</div>
+                    <div class="introduce-desc">
+                        我目前是一名产品设计师，初级开发者，并立志成为一名设计工程师。在云计算、低代码、电商、智能客服、零信任等多个行业都有见解和实践经验。<br><br>
+                        我热衷于技术带来的无限可能，也专注于探索产品设计的价值，寻求极致设计、交互、技术包容、业务理解之间的平衡来解决问题。<br><br>
+                        此外，我还获得了三项外观发明专利，可以在<a href="#" target="_blank">国家知识产权局 ↗</a>官网输入我的名字查询。
+                    </div>
+                </div>
+                <div class="about-info-right">
+                    <div class="contact">
+                        <div class="about-info-title">联系方式</div>
+                        <div class="contact-desc">
+                            <div class="list">
+                                <div class="list-label">邮箱:</div>
+                                <div href="javascript:" class="list-value" id="email" tabindex="0" role="button"
+                                    title="点击复制邮箱">
+                                    <a id="emailCopied">csti1231@qq.com</a>
+                                </div>
+                                <span class="list-value copied">已复制&nbsp;✓</span>
+                            </div>
+                            <div class="list">
+                                <div class="list-label">微信：</div>
+                                <div class="list-value">
+                                    <a class="tooltip">瀚(csti)
+                                        <div class="tooltip-box">
+                                            <img src="./assets/about/wechat.png">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume">
+                        <div class="about-info-title resume-title">简历</div>
+                        <div class="resume-desc">
+                            <div class="resume-desc-helptext">下载我的简历 (PDF & 1MB)</div>
+                            <div class="magical resume-btn"><a href="./index.html" target="_blank">下载</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-middle">
+            <div class="power">
+                <div class="list-00">
+                    <div class="magical power-card-number">
+                        <a>
+                            <div class="card-title">7</div>
+                            <div class="card-text">工作经验</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card-number">
+                        <a>
+                            <div class="card-title">60⁺</div>
+                            <div class="card-text">项目经验</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card-number">
+                        <a>
+                            <div class="card-title">130⁺</div>
+                            <div class="card-text">文章数量</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card-number">
+                        <a>
+                            <div class="card-title">3</div>
+                            <div class="card-text">专利数量</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="list-01">
+                    <div class="magical power-card">
+                        <a>
+                            <div class="card-img" style="background-image: url('./assets/about/abstract.svg')"></div>
+                            <div class="card-text">我的能力</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card">
+                        <a>
+                            <div class="card-img" style="background-image: url('./assets/about/menu.svg')"></div>
+                            <div class="card-text">我的能力</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card">
+                        <a>
+                            <div class="card-img" style="background-image: url('./assets/about/code.svg')"></div>
+                            <div class="card-text">我的能力</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card">
+                        <a>
+                            <div class="card-img" style="background-image: url('./assets/about/pin.svg')"></div>
+                            <div class="card-text">我的能力</div>
+                        </a>
+                    </div>
+                    <div class="magical power-card">
+                        <a>
+                            <div class="card-img" style="background-image: url('./assets/about/pen.svg')"></div>
+                            <div class="card-text">我的能力</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-bottom">
+            <div class="experience">
+                <div class="item">
+                    <div class="time">❖ 2023.10 ~ Now</div>
+                    <div class="name">
+                        <div class="company"><a href="#" target="_blank">Company One ↗</a></div>
+                        <div class="job">界面设计师</div>
+                    </div>
+                    <div class="project-experience">
+                        <div class="item">
+                            <div class="title">项目标题</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>App、网页、H5、小程序、后台设计、设计资产建设、Axure交互设计、企业VI设计等，欢迎咨询</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="time">❖ 2019.08 ~ 2023.08</div>
+                    <div class="name">
+                        <div class="company"><a href="#" target="_blank">Company Two ↗</a></div>
+                        <div class="job">产品设计师</div>
+                    </div>
+                    <div class="project-experience">
+                        <div class="item">
+                            <div class="title">项目标题 One</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就；</li>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就</li>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="title">项目标题 Two</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就；</li>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="title">项目标题 Three</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就；</li>
+                                    <li>这是一段项目描述，可以介绍自己的项目成果、项目经验、取得的成就。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="time">❖ 2016.05 ~ 2019.06</div>
+                    <div class="name">
+                        <div class="company"><a href="#" target="_blank">Company Three ↗</a></div>
+                        <div class="job">UI Designer</div>
+                    </div>
+                    <div class="project-experience">
+                        <div class="item">
+                            <div class="title">Project Title</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>This is a project description that can introduce one's project achievements,
+                                        project experience, and achievements;</li>
+                                    <li>This is a project description that can introduce one's project achievements,
+                                        project experience, and achievements.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="copyright">
+            <div><a href="./index.html" target="_blank">© 2024</a></div>
+            <span>|</span>
+            <div class="fillings">
+                <a href="./index.html" target="_blank">瀚</a>
+            </div>
+            <span>|</span>
+            <div class="friends">
+                <a href="./index.html" target="_blank">csti</a>
+            </div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="shape-light"></div>
+        <div class="shape-star">
+            <div class="rising-stars rising-stars-visible">
+                <div style="height:1px;width:1px"></div>
+                <div style="height:2px;width:2px"></div>
+                <div style="height:1px;width:1px"></div>
+            </div>
+        </div>
+        <div class="shape-earth"></div>
+    </div>
+</body>
+<script src="./js/main.min.js"></script>
+<script src='./js/anime.js'></script>
+<script src='./js/firework.js'></script>
+<script src='./js/audio-visualizer.js'></script>
+<style>
+    /* 修改音频开关激活状态的颜色 */
+    .audio-switch.on {
+        background-color: #6361DC !important;
+    }
+</style>
+
+</html>

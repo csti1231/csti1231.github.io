@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="color-scheme: dark;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀚</title>
+    <link rel="stylesheet" href="./css/style.min.css">
+    <link href="./css/motion.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="./assets/public/favicon.gif" />
+    <script src="./js/typed.umd.js"></script>
+    <script src="./js/layer.js"></script>
+    <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/quanju.js"></script>
+</head>
+
+<body>
+    <canvas class="fireworks"></canvas>
+    <div class="head">
+        <div class="main">
+            <a href="./index.html" class="logo" style="font-size: 24px;color: white;">瀚</a>
+            <div class="menu">
+                <li class="magical btn nav" onclick="window.location.href='./index.html'">首页</li>
+                <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
+                <li class="magical btn" onclick="window.location.href='./blog.html'">博客</li>
+                <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+            </div>
+            <div class="menu" id="menu-expand">
+                <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
+            </div>
+            <div id="menu-panel">
+                <div class="menu-panel-content">
+                    <li class="magical btn nav" onclick="window.location.href='./index.html'">首页</li>
+                    <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
+                    <li class="magical btn" onclick="window.location.href='./blog.html'">博客</li>
+                    <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+                </div>
+            </div>
+        </div>
+        <blockquote><img src="./assets/public/skin_light.svg"></blockquote>
+    </div>
+    <!-- 太阳系 -->
+    <div class="container">
+        <div class='solar-syst'>
+            <div class='sun'></div>
+            <div class='mercury'></div>
+            <div class='venus'></div>
+            <div class='earth'></div>
+            <div class='mars'></div>
+            <div class='jupiter'></div>
+            <div class='saturn'></div>
+            <div class='uranus'></div>
+            <div class='neptune'></div>
+            <div class='pluto'></div>
+            <div class='asteroids-belt'></div>
+        </div>
+    </div>
+
+
+    <!-- 黑洞 -->
+    <style>
+        #black-hole {
+            z-index: -1000;
+            position: fixed;
+            right: 2%;
+            top: 20%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+    </style>
+    <canvas id="black-hole"></canvas>
+    <script src="./js/heidong.js"></script>
+
+    <!-- 内容 -->
+    <div class="index">
+        <div class="hello">
+            <div class="title">
+                <a class="title-name" onclick="saomaguanzhu()">瀚</a>
+            </div>
+            <script>function saomaguanzhu() { window.open('https://mp.weixin.qq.com/s?__biz=MzkxMTQ4NTM0OA==&mid=2247483737&idx=1&sn=bac2554e806fe390c9adee2046756eba&chksm=c11a3192f66db8842ce03f57b57425f62085995cb4a9bf1d9a27cdda9580d3f282745c5015ef#rd', "_blank", "width=400, height=500") }</script>
+            <div class="hello-desc" id="typed"></div>
+        </div>
+        <div class="content-divider"></div>
+        <div class="quickly-link">
+            <div class="title-hi">The information I shared</div>
+            <div class="loader"></div>
+            <div class="link-card">
+                <div class="link-card-list" id="cardContainer">
+                    <!-- 卡片将通过 JavaScript 动态渲染 -->
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 8V0H4.5V8H3.5Z" fill="#62616F"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4.5H0V3.5H8V4.5Z" fill="#62616F"></path>
+                </svg>
+                <div class="link-card-list" id="socialContainer">
+                    <!-- 社交媒体卡片将通过 JavaScript 动态渲染 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="copyright">
+            <!-- 时间 -->
+            <div class="time-container">
+                © <a href="#">瀚</a>
+                <span class="divider"> |</span>
+                <a href="#">
+                    <span id="time"></span>
+                </a>
+            </div>
+
+            <span class="divider">|</span>
+            <div class="friends">
+                <a href="" target="_blank">csti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="widget">
+        <div class="shape-light"></div>
+        <div class="shape-star">
+            <div class="rising-stars rising-stars-visible">
+                <div style="height:1px;width:1px"></div>
+                <div style="height:2px;width:2px"></div>
+                <div style="height:1px;width:1px"></div>
+            </div>
+        </div>
+        <div class="shape-earth"></div>
+    </div>
+
+    <!-- 把所有脚本移到这里，body 标签结束前 -->
+    <script src="./js/main.min.js"></script>
+    <script src='./js/anime.js'></script>
+    <script src='./js/firework.js'></script>
+    <script src='./js/audio-visualizer.js'></script>
+    <script>
+        // 时间脚本
+        function showTime() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            month = month < 10 ? '0' + month : month;
+            var day = date.getDate();
+            day = day < 10 ? '0' + day : day;
+            var hour = date.getHours();
+            hour = hour < 10 ? '0' + hour : hour;
+            var minute = date.getMinutes();
+            minute = minute < 10 ? '0' + minute : minute;
+            var second = date.getSeconds();
+            second = second < 10 ? "0" + second : second;
+            var current = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+            document.getElementById("time").innerHTML = current;
+        }
+        setInterval("showTime()", 1000);
+
+        // 打字效果
+        const options = {
+            strings: [
+                ">_< 欢迎来到我的秘密花园! ^1000",
+                ">_<让我们一起探索吧! ^1000",
+            ],
+            typeSpeed: 50,
+            backSpeed: 20,
+            startDelay: 300,
+            loop: true,
+            showCursor: true,
+        };
+        const typed = new Typed('#typed', options);
+    </script>
+    <style>
+        /* 修改音频开关激活状态的颜色 */
+        .audio-switch.on {
+            background-color: #6361DC !important;
+        }
+    </style>
+    <script>
+        // 卡片数据
+        const cardData = [
+            {
+                href: "./vip/index.html",
+                image: "./assets/index/vipmovie.png",
+                title: "免费影视",
+                desc: "热门vip影视免费看"
+            },
+            {
+                href: "./duanju/index.html",
+                image: "./assets/index/duanju.png",
+                title: "免费短剧",
+                desc: "热门vip短剧免费看"
+            },
+            {
+                href: "https://tools.qzxdp.cn/wyy_vip",
+                image: "./assets/index/vipmusic.png",
+                title: "免费音乐",
+                desc: "热门vip音乐解析"
+            },
+            {
+                href: "https://www.xiazaitool.com/",
+                image: "./assets/index/vipvideo.png",
+                title: "无水印下载器",
+                desc: "快手、抖音、微博、小红书、B站等..."
+            },
+            {
+                href: "https://chatgpt.dairoot.cn/admin/#/login",
+                image: "./assets/index/chatgpt.png",
+                title: "ChatGPT",
+                desc: "gpt4.0体验版"
+            },
+            {
+                href: "https://chat18.aichatos10.com/#/chat/1732452844851",
+                image: "./assets/index/AIchatOS.svg",
+                title: "AIchatOS",
+                desc: "gpt3.5"
+            },
+            {
+                href: "https://www.douyin.com/user/self",
+                image: "./assets/index/douyin.png",
+                title: "抖音",
+                desc: "短视频"
+            },
+            {
+                href: "https://www.kuaishou.com/profile/3x8pkb7d387se24",
+                image: "./assets/index/kuaishou.png",
+                title: "快手",
+                desc: "短视频"
+            },
+            {
+                href: "https://www.deepl.com/zh/translator",
+                image: "./assets/index/deepl.png",
+                title: "翻译器",
+                desc: "免费翻译器"
+            }
+        ];
+
+        const socialData = [
+
+            {
+                href: "https://github.com/csti1231",
+                image: "./assets/index/github.png",
+                title: "Github",
+                desc: "我的代码花园(csti1231)"
+            },
+            {
+                href: "https://gitee.com/csti",
+                image: "./assets/index/gitee.png",
+                title: "Gitee",
+                desc: "我的代码花园(csti)"
+            },
+            {
+                href: "https://space.bilibili.com/1975219539?spm_id_from=333.1007.0.0",
+                image: "./assets/index/bilibili.png",
+                title: "bilibili",
+                desc: "我的第二个大学(audience)"
+            }
+            ,
+            {
+                href: "https://juejin.cn/user/2769030832717932",
+                image: "./assets/index/xitujuejin.png",
+                title: "稀土掘金",
+                desc: "我的知识花园(audience)"
+            },
+            {
+                href: "https://i.csdn.net/#/user-center/profile?spm=1000.2115.3001.5111",
+                image: "./assets/index/csdn.png",
+                title: "CSDN",
+                desc: "我的知识花园(csti)"
+            }
+        ];
+
+        // 修改渲染卡片的函数
+        function renderCards(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(card => `
+                <div class="magical link-card-item" onmouseover="playHoverSound()" onmouseout="stopHoverSound()">
+                    <a href="${card.href}" target="_blank">
+                        <img src="${card.image}" alt="">
+                        <div class="info">
+                            <div class="info-title">${card.title}</div>
+                            <div class="info-desc">${card.desc}</div>
+                        </div>
+                        <div class="icon icon-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M10.55 7.58332H1.16663V6.41665H10.55L7.75415 3.62082L8.5791 2.79587L12.1645 6.3813C12.5062 6.72299 12.5062 7.27701 12.1645 7.61873L8.5791 11.2042L7.75415 10.3792L10.55 7.58332Z" fill="#B3B3C1"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            `).join('');
+
+            // 重新初始化音频效果
+            initializeAudio();
+        }
+
+        // 添加音频相关函数
+        let hoverSound = new Audio('./assets/audio/hover.wav');
+        let isPlaying = false;
+
+        function playHoverSound() {
+            if (!isPlaying) {
+                hoverSound.currentTime = 0;
+                hoverSound.play();
+                isPlaying = true;
+            }
+        }
+
+        function stopHoverSound() {
+            isPlaying = false;
+        }
+
+        // 初始化音频
+        function initializeAudio() {
+            // 预加载音频
+            hoverSound.load();
+            // 设置音量
+            hoverSound.volume = 0.5;
+        }
+
+        // 页面加载完成后渲染卡片并初始化音频
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards(cardData, 'cardContainer');
+            renderCards(socialData, 'socialContainer');
+            initializeAudio();
+        });
+    </script>
+
+    <!-- tilte -->
+    <script>
+        var OriginTitle = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                document.title = 'w(ﾟДﾟ)w 等你呐！等你呐！';
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = '♪(^∇^*)欢迎回来 ~' + OriginTitle + '!';
+                titleTime = setTimeout(function () {
+                    document.title = OriginTitle;
+                }, 2000);
+            }
+        });
+    </script>
+
+    <script>
+        //屏蔽右键菜单 
+        document.oncontextmenu = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        //屏蔽粘贴 
+        document.onpaste = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        //屏蔽复制
+        document.oncopy = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        //屏蔽剪切
+        document.oncut = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        //屏蔽选中
+        document.onselectstart = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
