@@ -7,6 +7,7 @@
     <title>瀚 · 工具</title>
     <link rel="stylesheet" href="./css/style.min.css">
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
+    <link rel="stylesheet" href="./js/tools.css">
 </head>
 
 <body>
@@ -34,9 +35,14 @@
         </div>
         <blockquote><img src="./assets/public/skin_light.svg"></blockquote>
     </div>
-    <div class="work">
-        <div class="card-list" id="toolsList">
-            <!-- 卡片将通过 JavaScript 动态渲染 -->
+    <!-- 内容 -->
+    <div class="index-tools">
+        <div class="quickly-link">
+            <div class="link-card">
+                <div class="link-card-list" id="cardContainer">
+                    <!-- 卡片将通过 JavaScript 动态渲染 -->
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -64,17 +70,7 @@
         <div class="shape-earth"></div>
     </div>
 </body>
-<script>
-    window.addEventListener("mousemove", function (e) {
-        document.querySelectorAll(".magical").forEach(element => {
-            const rect = element.getBoundingClientRect();
-            const offsetX = e.clientX - rect.left;
-            const offsetY = e.clientY - rect.top;
-            element.style.setProperty("--mouse-x", `${offsetX}px`);
-            element.style.setProperty("--mouse-y", `${offsetY}px`);
-        });
-    });
-</script>
+
 <script src="./js/main.min.js"></script>
 <script src='./js/anime.js'></script>
 <script src='./js/firework.js'></script>
