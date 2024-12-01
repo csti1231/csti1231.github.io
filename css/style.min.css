@@ -33,12 +33,6 @@ html {
         width: 320px !important;
         height: 320px !important
     }
-
-    .copyright span,
-    .fillings,
-    .friends {
-        display: none !important
-    }
 }
 
 @media screen and (min-width: 769px) {
@@ -588,7 +582,7 @@ body {
     --mw: 1350px;
     flex-direction: column;
     padding-top: 80px;
-    width: 100%;
+    width: 100%;    
     max-width: var(--mw)
 }
 

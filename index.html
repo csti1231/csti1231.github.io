@@ -105,20 +105,20 @@
         <div class="copyright">
             <!-- 时间 -->
             <div class="time-container">
-                © <a href="#">瀚</a>
-                <span class="divider"> |</span>
+                &copy;
                 <a href="#">
-                    <span id="time"></span>
+                    <span id="time-container-time"></span>
                 </a>
             </div>
-
+            <span class="divider">|</span>
+            瀚
             <span class="divider">|</span>
             <div class="friends">
                 <a href="" target="_blank">csti</a>
             </div>
         </div>
     </div>
-
+    <script src="./js/time.js"></script>
     <div class="widget">
         <div class="shape-light"></div>
         <div class="shape-star">
@@ -137,25 +137,6 @@
     <script src='./js/firework.js'></script>
     <script src='./js/audio-visualizer.js'></script>
     <script>
-        // 时间脚本
-        function showTime() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1;
-            month = month < 10 ? '0' + month : month;
-            var day = date.getDate();
-            day = day < 10 ? '0' + day : day;
-            var hour = date.getHours();
-            hour = hour < 10 ? '0' + hour : hour;
-            var minute = date.getMinutes();
-            minute = minute < 10 ? '0' + minute : minute;
-            var second = date.getSeconds();
-            second = second < 10 ? "0" + second : second;
-            var current = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-            document.getElementById("time").innerHTML = current;
-        }
-        setInterval("showTime()", 1000);
-
         // 打字效果
         const options = {
             strings: [
@@ -165,7 +146,6 @@
                 ">_< 欢迎来到我的秘密花园! ^1000",
                 ">_<让我们一起探索吧! ^1000",
                 "建议你用电脑访问! ^1000",
-
             ],
             typeSpeed: 50,
             backSpeed: 20,

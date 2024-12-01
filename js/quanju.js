@@ -18,7 +18,6 @@
 })();
 
 
-
 $(function () {
     // 将 API 更改为 ipinfo.io
     fetch('https://ipinfo.io/json').then(response => response.json()).then(data => {
