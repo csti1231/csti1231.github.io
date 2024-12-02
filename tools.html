@@ -14,7 +14,7 @@
     <canvas class="fireworks"></canvas>
     <div class="head">
         <div class="main">
-            <a href="./index.html" class="logo" style="font-size: 24px;color: white;">瀚</a>
+            <a href="./index.html" class="logo logo-gradient" style="font-size: 24px;">瀚</a>
             <div class="menu">
                 <li class="magical btn" onclick="window.location.href='./index.html'">首页</li>
                 <li class="magical btn nav" onclick="window.location.href='./tools.html'">工具</li>
@@ -37,6 +37,24 @@
     </div>
     <!-- 内容 -->
     <div class="index-tools">
+        <div class="tools-header">
+            <div class="tools-categories">
+                <div class="category-pills">
+                    <span class="pill magical active" data-category="all" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">全部</span>
+                    <span class="pill magical" data-category="ai" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">AI工具</span>
+                    <span class="pill magical" data-category="dev" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">开发工具</span>
+                    <span class="pill magical" data-category="media" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">媒体工具</span>
+                    <span class="pill magical" data-category="system" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">系统工具</span>
+                    <span class="pill magical" data-category="other" onmouseover="playHoverSound()"
+                        onmouseout="stopHoverSound()">其他工具</span>
+                </div>
+            </div>
+        </div>
         <div class="quickly-link">
             <div class="link-card">
                 <div class="link-card-list" id="cardContainer">

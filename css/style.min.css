@@ -163,7 +163,7 @@ body {
 }
 
 .head .logo {
-    height: 20px
+    height: 28px;
 }
 
 .head #menu-expand {
@@ -495,7 +495,8 @@ body {
     background: var(--bg);
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent
+    -webkit-text-fill-color: transparent;
+    font-family: KaiTi;
 }
 
 .index .hello .title .title-name:hover::after {
@@ -1542,4 +1543,32 @@ body {
 .tooltip:hover .tooltip-box {
     visibility: visible;
     opacity: 1
+}
+
+.logo-gradient {
+  background: linear-gradient(45deg, 
+    #FF3CAC, /* 霓虹粉 */
+    #784BA0, /* 深紫 */
+    #9B4BFF, /* 亮紫 */
+    #2B86C5, /* 亮蓝 */
+    #FFFFFF, /* 纯白 */
+    #00FFA3  /* 荧光绿 */
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: gradient-animation 4s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

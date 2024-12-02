@@ -6,7 +6,7 @@
 }
 
 .index-tools .link-card-item {
-    height: 100px; /* 固定卡片高度 */
+    height: 100px;
     display: flex;
 }
 
@@ -23,16 +23,141 @@
     justify-content: center;
 }
 
-/* 移动端适配 */
-@media screen and (max-width: 1200px) {
-    .index-tools .link-card-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* 添加描述文本溢出省略样式 */
+.index-tools .info .info-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
+/* 工具分类导航样式 */
+.tools-header {
+    margin: 0 0 25px;
+}
+
+.tools-categories {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+}
+
+.category-pills {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.category-pills .pill {
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* magical类效果 */
+.category-pills .pill::before,
+.category-pills .pill::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: inherit;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.category-pills .pill::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    opacity: 0;
+}
+
+.category-pills .pill::after {
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.4),
+        transparent 40%
+    );
+    opacity: 0;
+    z-index: 1;
+}
+
+.category-pills .pill:hover::before {
+    opacity: 1;
+}
+
+.category-pills .pill:hover::after {
+    opacity: 1;
+}
+
+.category-pills .pill.active {
+    background: #6361DC;
+    color: white;
+}
+
+/* 移动端适配 */
 @media screen and (max-width: 768px) {
+    .tools-header {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        margin: 0;
+        z-index: 99;
+        background: rgba(14, 14, 19, 0.8);
+        backdrop-filter: blur(10px);
+    }
+
+    .tools-categories {
+        padding: 8px 15px;
+    }
+
+    .category-pills {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: none;
+        padding-bottom: 5px;
+        gap: 8px;
+    }
+    
+    .category-pills .pill {
+        padding: 6px 12px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        min-width: fit-content;
+    }
+
+    .category-pills::-webkit-scrollbar {
+        display: none;
+    }
+
+    .index-tools {
+        padding-top: 140px;
+    }
+
     .index-tools .link-card-list {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
 
