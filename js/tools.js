@@ -60,14 +60,14 @@ const cardData = [
         href: "https://kimi.moonshot.cn/",
         image: "https://cdn.gogoing.work/bookmark/e/0/5/b/kimi.moonshot.cn.png",
         title: "Kimi.ai ",
-        desc: "Kimi 是一个有着超大“内存”的智能助手",
+        desc: "Kimi 是一个有着超大",
         category: "ai"
     },
     {
         href: "https://tongyi.aliyun.com/qianwen/?sessionId=335f2b92c8514e3c9bec794738b0f465",
         image: "https://cdn.gogoing.work/bookmark/b/f/b/f/tongyi.aliyun.com.png",
         title: "通义千问",
-        desc: "我是通义千问，一个专门响应人类指令的大模型",
+        desc: "我是通义千问，一个专门响应人",
         category: "ai"
     },
     {

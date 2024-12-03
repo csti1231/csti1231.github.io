@@ -3,10 +3,13 @@ html {
 }
 
 @media screen and (max-width: 768px) {
-    .about-info {
+    .about .about-info {
+        gap: 0 !important;
         flex-direction: column
     }
-
+.tooltip .tooltip-box{
+    right: -50px !important;
+}
     .list-00,
     .list-01 {
         grid-template-columns: 1fr 1fr !important
@@ -583,7 +586,7 @@ body {
     --mw: 1350px;
     flex-direction: column;
     padding-top: 80px;
-    width: 100%;    
+    width: 100%;
     max-width: var(--mw)
 }
 
@@ -1176,7 +1179,7 @@ body {
 
 .about .about-info {
     display: flex;
-    gap: 72px
+    gap: 650px
 }
 
 .about .about-info-title {
@@ -1546,29 +1549,37 @@ body {
 }
 
 .logo-gradient {
-  background: linear-gradient(45deg, 
-    #FF3CAC, /* 霓虹粉 */
-    #784BA0, /* 深紫 */
-    #9B4BFF, /* 亮紫 */
-    #2B86C5, /* 亮蓝 */
-    #FFFFFF, /* 纯白 */
-    #00FFA3  /* 荧光绿 */
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: gradient-animation 4s ease infinite;
+    background: linear-gradient(45deg,
+            #FF3CAC,
+            /* 霓虹粉 */
+            #784BA0,
+            /* 深紫 */
+            #9B4BFF,
+            /* 亮紫 */
+            #2B86C5,
+            /* 亮蓝 */
+            #FFFFFF,
+            /* 纯白 */
+            #00FFA3
+            /* 荧光绿 */
+        );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: gradient-animation 4s ease infinite;
 }
 
 @keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
