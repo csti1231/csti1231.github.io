@@ -137,8 +137,8 @@ const cardData = [
         href: "https://www.seaart.me/zhCN",
         image: "https://www.seaart.me/_nuxt/img/default-avatar-32.021289a.webp",
         title: "海艺Ai",
-        desc: "（绘画）",
-        category: "media"
+        desc: "ai（绘画）",
+        category: "ai"
     },
     {
         href: "https://zhiwen.xfyun.cn",
@@ -176,8 +176,8 @@ const cardData = [
         category: "ai"
     },
     {
-        href: "https://chat18.aichatos8.com",
-        image: "https://t8.baidu.com/it/u=1447957139,1111922189&fm=217&app=126&size=f242,150&n=0&f=JPEG&fmt=auto?s=A692856A6ED558D6122E4652020040FF&sec=1717866000&t=1133a89fe8414b52ecdfa873c5e28ba1",
+        href: "https://chat18.aichatos98.com/#/chat/1733484018832",
+        image: "./assets/index/AIchatOS.svg",
         title: "AIchatOS",
         desc: "在线AI 3.5",
         category: "ai"
@@ -215,7 +215,7 @@ const cardData = [
         image: "https://echarts.apache.org/zh/images/logo.png?_v_=20240226",
         title: "echarts图",
         desc: "在线echarts 图",
-        category: "media"
+        category: "dev"
     },
     {
         href: "https://www.mxnzp.com/doc/list",
