@@ -21,6 +21,61 @@ const cardData = [
         category: "media"
     },
     {
+        href: 'https://www.yinziai.com/tools/extract-text',
+        image: 'https://www.yinziai.com/_nuxt/img/ai-logo.456ac74.png',
+        title: '音子AI',
+        desc: '在线 实用 文案提取',
+        category: 'ai'
+    },
+    {
+        href: 'https://tool.a5.cn/shortvideotext.html',
+        image: 'https://tool.a5.cn/static/index/v1/images/logo.png',
+        title: 'A5工具',
+        desc: '在线 实用 文案提取',
+        category: 'ai'
+    },
+    {
+        href: 'https://www.52pojie.cn/',
+        image: 'https://static.52pojie.cn/static/image/common/logo.png',
+        title: '吾爱破解',
+        desc: '破解',
+        category: 'other'
+    },
+    {
+        href: 'https://www.ypojie.com/',
+        image: 'https://www.ypojie.com/wp-content/uploads/2022/02/logo.png',
+        title: '亿破姐',
+        desc: '破解',
+        category: 'other'
+    },
+    {
+        href: 'https://www.kxdw.com/',
+        image: 'https://www.kxdw.com/statics/kxdw/images/logo1.png',
+        title: '开心电玩',
+        desc: '破解',
+        category: 'other'
+    },
+    {
+        href: 'https://www.93pojie.com/',
+        image: 'https://www.93pojie.com/template/guiigo_qing/images/logo.png',
+        title: '93破解论坛',
+        desc: '破解',
+        category: 'other'
+    },
+    {
+        href: 'https://www.gopojie.com/',
+        image: 'https://gopojie-1253855353.cos.ap-beijing.myqcloud.com/logo/logo.png',
+        title: 'GO破解',
+        desc: '破解',
+        category: 'other'
+    }, {
+        href: 'https://www.pcpojie.com/',
+        image: 'https://www.pcpojie.com/template/ccbm_jianyue/images/logo/moji-logo.png',
+        title: '魔法破解',
+        desc: '破解',
+        category: 'other'
+    },
+    {
         href: "https://chatgptplus.cn/",
         image: "https://ts1.cn.mm.bing.net/th/id/R-C.81f7067fba5377d70399ef94a999e287?rik=TJXGfvLUdIwiPA&riu=http%3a%2f%2fwww.kuaipng.com%2fUploads%2fpic%2fw%2f2023%2f02-09%2f135404%2fwater_135404_698_698_.png&ehk=rbgMXQoFbTAhO4VE0MFxk4xw8EkIgKhMJyQCVtPVjnA%3d&risl=&pid=ImgRaw&r=0",
         title: "openai",
