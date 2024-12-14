@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瀚</title>
     <link rel="stylesheet" href="./css/style.min.css">
-
+    <link rel="stylesheet" href="./css/layer.css">
     <link href="./css/motion.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
     <script src="./js/typed.umd.js"></script>
     <script src="./js/layer.js"></script>
     <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/quanju.js"></script>
+    <script>
+        // 检查是否已登录
+        window.addEventListener('load', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -25,6 +34,7 @@
                 <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
                 <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                 <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+                <li class="magical btn" onclick="logout()">退出登录</li>
             </div>
             <div class="menu" id="menu-expand">
                 <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
@@ -35,6 +45,7 @@
                     <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
                     <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                     <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+                    <li class="magical btn" onclick="logout()">退出登录</li>
                 </div>
             </div>
         </div>
@@ -251,7 +262,7 @@
                 href: "https://space.bilibili.com/1975219539?spm_id_from=333.1007.0.0",
                 image: "./assets/index/bilibili.png",
                 title: "bilibili",
-                desc: "我的第二个大学(audience)"
+                desc: "的第二个大学(audience)"
             }
             ,
             {
@@ -422,6 +433,13 @@
             } catch (e) {
                 return false;
             }
+        }
+    </script>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
         }
     </script>
 

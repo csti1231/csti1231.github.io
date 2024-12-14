@@ -34,8 +34,6 @@ $(function () {
             displayStyledIP();
             setInterval(displayStyledIP, 5000);
         })
-
-
     });
 });
 ((
