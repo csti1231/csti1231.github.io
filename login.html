@@ -7,8 +7,14 @@
     <title>登录 - 瀚</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
+    <link rel="stylesheet" href="./css/backgrounds.css">
+    <script src="./js/backgrounds.js"></script>
+    <script src="./js/quanju.js"></script>
+    <script src='./js/audio-visualizer.js'></script>
+
     <style>
         body {
+            user-select: none;
             background-color: #0e0e13;
             color: #fff;
             height: 100vh;
@@ -22,6 +28,7 @@
         }
 
         .login-container {
+            position: absolute;
             z-index: 999;
             background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
@@ -55,6 +62,7 @@
         }
 
         .logo {
+            cursor: pointer;
             text-align: center;
             margin-bottom: 2rem;
             font-size: 2rem;
@@ -281,6 +289,19 @@
 </head>
 
 <body>
+    <audio id="backgroundMusic" loop>
+        <source src="./assets/audio/bg.wav" type="audio/wav">
+        您的浏览器不支持音频元素。
+    </audio>
+    <audio id="hoverSound">
+        <source src="./assets/audio/hover.wav" type="audio/wav">
+        您的浏览器不支持音频元素。
+    </audio>
+    <audio id="titleSound">
+        <source src="./assets/audio/title.wav" type="audio/wav">
+        您的浏览器不支持音频元素。
+    </audio>
+    <canvas id="canvas"></canvas>
     <div class="login-container">
         <div class="logo-gradient logo">瀚</div>
         <form id="loginForm">
@@ -375,6 +396,21 @@
                 sessionStorage.removeItem('autoFill');
                 document.querySelector('button[type="submit"]').focus();
             }
+        });
+
+        // 播放背景音乐
+        document.getElementById('backgroundMusic').play();
+
+        // 鼠标悬停时播放音效
+        document.querySelector('.logo-gradient').addEventListener('mouseover', function() {
+            document.getElementById('titleSound').play();
+        });
+
+        // 鼠标悬停在其他元素时播放音效
+        document.querySelectorAll('.form-control').forEach(function(element) {
+            element.addEventListener('mouseover', function() {
+                document.getElementById('hoverSound').play();
+            });
         });
     </script>
 </body>
