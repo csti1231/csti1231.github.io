@@ -20,6 +20,7 @@
                 <li class="magical btn nav" onclick="window.location.href='./tools.html'">工具</li>
                 <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                 <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+                <li class="magical btn" onclick="logout()">退出登录</li>
             </div>
             <div class="menu" id="menu-expand">
                 <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
@@ -30,6 +31,7 @@
                     <li class="magical btn nav" onclick="window.location.href='./tools.html'">工具</li>
                     <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                     <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
+                    <li class="magical btn" onclick="logout()">退出登录</li>
                 </div>
             </div>
         </div>
@@ -94,7 +96,12 @@
         <div class="shape-earth"></div>
     </div>
 </body>
-
+<script>
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+    }
+</script>
 <script src="./js/main.min.js"></script>
 <script src='./js/anime.js'></script>
 <script src='./js/firework.js'></script>
