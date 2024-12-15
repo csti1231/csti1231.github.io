@@ -40,9 +40,13 @@
         .form-control::placeholder {
             color: rgba(255, 255, 255, 0.6);
             opacity: 1;
+            font-size: 0.8rem;
+            /* 调整为更小的字体大小 */
         }
 
         .form-control::-moz-placeholder {
+            font-size: 0.8rem;
+            /* 调整为更小的字体大小 */
             color: rgba(255, 255, 255, 0.6);
             opacity: 1;
         }
@@ -282,7 +286,7 @@
         <form id="registerForm">
             <div class="mb-3">
                 <label for="username" class="form-label">用户名</label>
-                <input type="text" class="form-control" id="username" required>
+                <input type="text" class="form-control" id="username" required placeholder="请输入用户名">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">密码</label>
@@ -337,43 +341,37 @@
         document.getElementById('registerForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const userIdentifier = document.getElementById('username').value; // 改为 userIdentifier
+            const secretKey = document.getElementById('password').value; // 改为 secretKey
+            const confirmSecretKey = document.getElementById('confirmPassword').value; // 改为 confirmSecretKey
 
-            if (password.length < 4) {
-                alert('密码长度不能少于6位');
+            if (secretKey.length < 4) {
+                alert('密码长度不能少于4位');
                 return;
             }
 
-            if (password !== confirmPassword) {
+            if (secretKey !== confirmSecretKey) {
                 alert('两次输入的密码不一致');
                 return;
             }
 
-            // 从本地存储获取现有用户数据
-            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
-            // 检查用户名是否已存在
-            if (users.some(user => user.username === username)) {
-                alert('用户名已存���');
+            if (storedUsers.some(user => user.username === userIdentifier)) {
+                alert('用户名已存在');
                 return;
             }
 
-            // 添加新用户
-            users.push({
-                username,
-                password
+            storedUsers.push({
+                username: btoa(userIdentifier), // 使用 Base64 编码
+                password: btoa(secretKey) // 使用 Base64 编码
             });
 
-            // 保存到本地存储
-            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('users', JSON.stringify(storedUsers));
 
-            alert('注册成功！');
-            // 将注册信息临时存储，用于登录页面自动填充
             sessionStorage.setItem('autoFill', JSON.stringify({
-                username,
-                password
+                username: btoa(userIdentifier), // 使用 Base64 编码
+                password: btoa(secretKey) // 使用 Base64 编码
             }));
             window.location.href = 'login.html';
         });

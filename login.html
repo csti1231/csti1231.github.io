@@ -263,6 +263,20 @@
             background: #0E0E13;
             filter: blur(2px)
         }
+
+        /* 添加此样式以调整 placeholder 的字体大小 */
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 1;
+            font-size: 0.8rem;
+            /* 调整为更小的字体大小 */
+        }
+
+        .form-control::-moz-placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 1;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 
@@ -272,11 +286,11 @@
         <form id="loginForm">
             <div class="mb-3">
                 <label for="username" class="form-label">用户名</label>
-                <input type="text" class="form-control" id="username" required>
+                <input type="text" class="form-control" id="username" required placeholder="请输入用户名">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">密码</label>
-                <input type="password" class="form-control" id="password" required>
+                <input type="password" class="form-control" id="password" required placeholder="请输入密码">
             </div>
             <button type="submit" class="btn btn-primary w-100 mb-3">登录</button>
             <div class="text-center">
@@ -321,20 +335,22 @@
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const userIdentifier = document.getElementById('username').value; // 改为 userIdentifier
+            const secretKey = document.getElementById('password').value; // 改为 secretKey
 
-            // 从本地存储获取用户数据
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.username === username && u.password === password);
+            if (secretKey.length < 4) {
+                alert('密码长度不能少于4位');
+                return;
+            }
+
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+            const user = storedUsers.find(u => u.username === btoa(userIdentifier) && u.password === btoa(secretKey));
 
             if (user) {
-                // 登录成功
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.href = 'index.html';
             } else {
-                // 登录失败
-                if (users.length === 0) {
+                if (storedUsers.length === 0) {
                     alert('获取不到数据，将为您跳转到注册页面');
                     setTimeout(() => {
                         window.location.href = 'register.html';
@@ -345,22 +361,18 @@
             }
         });
 
-        // 检查是否已登录
         window.addEventListener('load', function () {
             const currentUser = localStorage.getItem('currentUser');
             if (currentUser) {
                 window.location.href = 'index.html';
             }
 
-            // 检查是否有自动填充信息
             const autoFill = sessionStorage.getItem('autoFill');
             if (autoFill) {
                 const { username, password } = JSON.parse(autoFill);
-                document.getElementById('username').value = username;
-                document.getElementById('password').value = password;
-                // 清除自动填充信息，避免刷新页面时重复填充
+                document.getElementById('username').value = atob(username); // 解码用户名
+                document.getElementById('password').value = atob(password); // 解码密码
                 sessionStorage.removeItem('autoFill');
-                // 聚焦到登录按钮
                 document.querySelector('button[type="submit"]').focus();
             }
         });
