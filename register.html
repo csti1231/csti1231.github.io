@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
     <link rel="stylesheet" href="./css/backgrounds.css">
     <script src="./js/backgrounds.js"></script>
-    <script src="./js/quanju.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/wechat-ip.js"></script>
     <style>
         body {
             user-select: none;
@@ -287,10 +288,6 @@
 </head>
 
 <body>
-    <audio id="backgroundMusic" loop>
-        <source src="./assets/audio/bg.wav" type="audio/wav">
-        您的浏览器不支持音频元素。
-    </audio>
     <audio id="hoverSound">
         <source src="./assets/audio/hover.wav" type="audio/wav">
         您的浏览器不支持音频元素。
@@ -357,9 +354,6 @@
 
     <script src="./js/bootstrap.min.js"></script>
     <script>
-        // 播放背景音乐
-        document.getElementById('backgroundMusic').play();
-
         // 鼠标悬停时播放音效
         document.querySelector('.logo').addEventListener('mouseover', function () {
             document.getElementById('titleSound').play();

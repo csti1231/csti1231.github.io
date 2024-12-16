@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
     <link rel="stylesheet" href="./css/backgrounds.css">
     <script src="./js/backgrounds.js"></script>
-    <script src="./js/quanju.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/wechat-ip.js"></script>
     <script src='./js/audio-visualizer.js'></script>
 
     <style>
@@ -289,10 +290,11 @@
 </head>
 
 <body>
-    <audio id="backgroundMusic" loop>
+    <!-- 删除背景音乐的音频元素 -->
+    <!-- <audio id="backgroundMusic" loop>
         <source src="./assets/audio/bg.wav" type="audio/wav">
         您的浏览器不支持音频元素。
-    </audio>
+    </audio> -->
     <audio id="hoverSound">
         <source src="./assets/audio/hover.wav" type="audio/wav">
         您的浏览器不支持音频元素。
@@ -398,17 +400,17 @@
             }
         });
 
-        // 播放背景音乐
-        document.getElementById('backgroundMusic').play();
+        // 删除播放背景音乐的代码
+        // document.getElementById('backgroundMusic').play();
 
         // 鼠标悬停时播放音效
-        document.querySelector('.logo-gradient').addEventListener('mouseover', function() {
+        document.querySelector('.logo-gradient').addEventListener('mouseover', function () {
             document.getElementById('titleSound').play();
         });
 
         // 鼠标悬停在其他元素时播放音效
-        document.querySelectorAll('.form-control').forEach(function(element) {
-            element.addEventListener('mouseover', function() {
+        document.querySelectorAll('.form-control').forEach(function (element) {
+            element.addEventListener('mouseover', function () {
                 document.getElementById('hoverSound').play();
             });
         });

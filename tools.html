@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="./css/style.min.css">
     <link rel="shortcut icon" href="./assets/public/favicon.gif" />
     <link rel="stylesheet" href="./css/tools.css">
+    <script>
+        // 检查是否已登录
+        window.addEventListener('load', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </head>
 
 <body>
