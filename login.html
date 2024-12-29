@@ -358,19 +358,25 @@
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const userIdentifier = document.getElementById('username').value; // 改为 userIdentifier
-            const secretKey = document.getElementById('password').value; // 改为 secretKey
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-            if (secretKey.length < 4) {
+            if (password.length < 4) {
                 alert('密码长度不能少于4位');
                 return;
             }
 
+            // 从localStorage获取用户数据
             const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-            const user = storedUsers.find(u => u.username === btoa(userIdentifier) && u.password === btoa(secretKey));
+            // 检查用户名和密码是否匹配（使用Base64编码比较）
+            const user = storedUsers.find(u =>
+                btoa(username) === u.username &&
+                btoa(password) === u.password
+            );
 
             if (user) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                // 只存储用户名到currentUser
+                localStorage.setItem('currentUser', user.username);
                 window.location.href = 'index.html';
             } else {
                 if (storedUsers.length === 0) {

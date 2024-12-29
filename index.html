@@ -15,11 +15,24 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/wechat-ip.js"></script>
     <script>
-        // 检查是否已登录
+        // 检查是否已登录并显示用户名
         window.addEventListener('load', function () {
             const currentUser = localStorage.getItem('currentUser');
             if (!currentUser) {
                 window.location.href = 'login.html';
+            } else {
+                try {
+                    // 解码并显示用户名
+                    const username = atob(currentUser);
+                    const userMenus = document.querySelectorAll('.logout-btn');
+                    userMenus.forEach(menu => {
+                        menu.querySelector('.username').textContent = username;
+                    });
+                } catch (error) {
+                    console.error('解析用户名失败:', error);
+                    localStorage.removeItem('currentUser');
+                    window.location.href = 'login.html';
+                }
             }
         });
     </script>
@@ -35,7 +48,17 @@
                 <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
                 <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                 <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
-                <li class="magical btn" onclick="logout()">退出登录</li>
+                <li class="magical btn user-menu-container">
+                    <div class="logout-btn">
+                        <img src="./assets/public/user.svg" alt="User Icon"
+                            style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                        <span class="username"></span>
+                    </div>
+                    <div class="user-dropdown">
+                        <button onclick="logout()">退出登录</button>
+                        <button onclick="deleteAccount()">注销账号</button>
+                    </div>
+                </li>
             </div>
             <div class="menu" id="menu-expand">
                 <li class="magical btn skin" id="menu-expand-child"><i class="icon menu-icon"></i></li>
@@ -46,7 +69,17 @@
                     <li class="magical btn" onclick="window.location.href='./tools.html'">工具</li>
                     <li class="magical btn" onclick="window.location.href='./blog.html'">嘿嘿</li>
                     <li class="magical btn" onclick="window.location.href='./about.html'">关于</li>
-                    <li class="magical btn" onclick="logout()">退出登录</li>
+                    <li class="magical btn user-menu-container">
+                        <div class="logout-btn">
+                            <img src="./assets/public/user.svg" alt="User Icon"
+                                style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                            <span class="username"></span>
+                        </div>
+                        <div class="user-dropdown">
+                            <button onclick="logout()">退出登录</button>
+                            <button onclick="deleteAccount()">注销账号</button>
+                        </div>
+                    </li>
                 </div>
             </div>
         </div>
@@ -439,10 +472,154 @@
 
     <script>
         function logout() {
+            // 获取当前用户信息
+            const currentUser = localStorage.getItem('currentUser');
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+            // 找到当前用户的完整信息
+            const user = storedUsers.find(u => u.username === currentUser);
+
+            if (user) {
+                // 将用户信息存储到sessionStorage中
+                sessionStorage.setItem('autoFill', JSON.stringify({
+                    username: user.username,
+                    password: user.password
+                }));
+            }
+
             localStorage.removeItem('currentUser');
             window.location.href = 'login.html';
         }
     </script>
+
+    <script>
+        // 修改用户菜单交互
+        document.addEventListener('DOMContentLoaded', function () {
+            const userMenus = document.querySelectorAll('.user-menu-container');
+
+            // 点击用户名显示/隐藏下拉菜单
+            userMenus.forEach(menu => {
+                const dropdown = menu.querySelector('.user-dropdown');
+                menu.querySelector('.logout-btn').addEventListener('click', function (e) {
+                    e.stopPropagation(); // 阻止事件冒泡
+                    // 切换下拉菜单的显示状态
+                    const isVisible = dropdown.style.display === 'block';
+                    dropdown.style.display = isVisible ? 'none' : 'block';
+                });
+            });
+
+            // 点击页面其他地方关闭下拉菜单
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.user-menu-container')) {
+                    document.querySelectorAll('.user-dropdown').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                }
+            });
+        });
+
+        // 退出登录函数
+        function logout() {
+            // 获取当前用户信息
+            const currentUser = localStorage.getItem('currentUser');
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+            // 找到当前用户的完整信息
+            const user = storedUsers.find(u => u.username === currentUser);
+
+            if (user) {
+                // 将用户信息存储到sessionStorage中
+                sessionStorage.setItem('autoFill', JSON.stringify({
+                    username: user.username,
+                    password: user.password
+                }));
+            }
+
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        // 注销账号函数
+        function deleteAccount() {
+            if (confirm('确定要注销账号吗？此操作不可恢复！')) {
+                const currentUser = localStorage.getItem('currentUser');
+                const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+                // 从用户列表中移除当前用户
+                const updatedUsers = storedUsers.filter(user => user.username !== currentUser);
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+                // 清除当前用户信息并跳转到注册页面
+                localStorage.removeItem('currentUser');
+                window.location.href = 'register.html';
+            }
+        }
+    </script>
+
+    <style>
+        /* 用户菜单样式 */
+        .user-menu-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            background: rgba(120, 120, 120, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 8px 0;
+            min-width: 100px;
+            z-index: 1000;
+            margin-top: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-dropdown button {
+            display: block;
+            width: 100%;
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: background-color 0.3s;
+        }
+
+        .user-dropdown button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .username {
+            display: inline-block;
+            max-width: 50px;
+            /* 根据需要调整最大宽度 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+            font-size: 14px;
+            /* 确保字体大小适合 */
+            line-height: 16px;
+            /* 确保行高适合 */
+        }
+    </style>
 
 </body>
 

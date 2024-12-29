@@ -369,38 +369,43 @@
         document.getElementById('registerForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const userIdentifier = document.getElementById('username').value; // 改为 userIdentifier
-            const secretKey = document.getElementById('password').value; // 改为 secretKey
-            const confirmSecretKey = document.getElementById('confirmPassword').value; // 改为 confirmSecretKey
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-            if (secretKey.length < 4) {
+            if (password.length < 4) {
                 alert('密码长度不能少于4位');
                 return;
             }
 
-            if (secretKey !== confirmSecretKey) {
+            if (password !== confirmPassword) {
                 alert('两次输入的密码不一致');
                 return;
             }
 
             const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
-            if (storedUsers.some(user => user.username === userIdentifier)) {
+            // 检查用户名是否已存在
+            if (storedUsers.some(user => user.username === btoa(username))) {
                 alert('用户名已存在');
                 return;
             }
 
+            // 保存新用户
             storedUsers.push({
-                username: btoa(userIdentifier), // 使用 Base64 编码
-                password: btoa(secretKey) // 使用 Base64 编码
+                username: btoa(username),
+                password: btoa(password)
             });
 
             localStorage.setItem('users', JSON.stringify(storedUsers));
 
+            // 将注册的账号密码信息存储到sessionStorage中
             sessionStorage.setItem('autoFill', JSON.stringify({
-                username: btoa(userIdentifier), // 使用 Base64 编码
-                password: btoa(secretKey) // 使用 Base64 编码
+                username: btoa(username),
+                password: btoa(password)
             }));
+
+            alert('注册成功！');
             window.location.href = 'login.html';
         });
     </script>
